@@ -28,7 +28,7 @@ export default function Home() {
       />
 
       <section className="hero">
-        <TextureArt motif="waves" className="hero-art" />
+        <TextureArt motif="waves" className="hero-art" cover />
         <div className="hero-bottom">
           <div className="hero-label">
             <p className="kicker">Noma vera / Silta somewhere per astra</p>

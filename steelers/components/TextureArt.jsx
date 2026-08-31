@@ -6,10 +6,19 @@ const wavePaths = Array.from({ length: 15 }, (_, index) => {
   }, 390 ${y} S 525 ${y + bend}, 690 ${y}`
 })
 
-export default function TextureArt({ motif = 'waves', label, className = '' }) {
+export default function TextureArt({
+  motif = 'waves',
+  label,
+  className = '',
+  cover = false,
+}) {
   return (
     <div className={`texture-art ${className}`} aria-hidden="true">
-      <svg viewBox="0 0 660 300" role="presentation">
+      <svg
+        viewBox="0 0 660 300"
+        preserveAspectRatio={cover ? 'xMidYMid slice' : 'xMidYMid meet'}
+        role="presentation"
+      >
         {motif === 'sun' && (
           <>
             {Array.from({ length: 12 }, (_, index) => (
