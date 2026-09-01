@@ -9,7 +9,7 @@ export const metadata = {
   description: 'Ouça One Night e Cold Yellow Sun, lançamentos da Sign Steelers.',
   alternates: { canonical: '/sons' },
 }
-
+// eslint-disable-next-line react/prop-types
 export default function Sons() {
   return (
     <PageShell>
