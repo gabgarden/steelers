@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import EditorialImage from '@/components/EditorialImage'
 import PageHead from '@/components/PageHead'
 import PageShell from '@/components/PageShell'
-import { band, releases } from '@/lib/content'
+import { art, band, releases } from '@/lib/content'
 
 export const metadata = {
   title: 'Sons',
@@ -16,8 +17,14 @@ export default function Sons() {
         Noxa lume per forma.
       </PageHead>
 
+      <EditorialImage
+        {...art.music}
+        sizes="(max-width: 900px) 100vw, 100vw"
+        className="page-masthead music-masthead"
+      />
+
       <section className="releases" aria-label="Discografia">
-        {releases.map((release, index) => (
+        {releases.map((release) => (
           <article className="release" key={release.title}>
             <figure className="release-art">
               <Image
@@ -27,7 +34,6 @@ export default function Sons() {
                 height={1000}
                 className="release-cover"
               />
-              <figcaption>SS—00{index + 1}</figcaption>
             </figure>
             <div className="release-copy">
               <div className="release-data">

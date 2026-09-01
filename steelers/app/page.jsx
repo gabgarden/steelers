@@ -1,6 +1,6 @@
-import TextureArt from '@/components/TextureArt'
+import EditorialImage from '@/components/EditorialImage'
 import SectionPreview from '@/components/SectionPreview'
-import { band, homeSections } from '@/lib/content'
+import { art, band, homeSections } from '@/lib/content'
 import { siteUrl } from '@/lib/site'
 
 const jsonLd = {
@@ -28,11 +28,15 @@ export default function Home() {
       />
 
       <section className="hero">
-        <TextureArt motif="waves" className="hero-art" cover />
+        <EditorialImage
+          {...art.home}
+          priority
+          sizes="100vw"
+          className="hero-image"
+        />
         <div className="hero-bottom">
           <div className="hero-label">
             <p className="kicker">Noma vera / Silta somewhere per astra</p>
-            <span className="hero-index">SS—001</span>
           </div>
           <h1>
             Sign <span>Steelers</span>

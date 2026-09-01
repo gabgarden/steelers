@@ -1,16 +1,25 @@
 import Link from 'next/link'
-import TextureArt from './TextureArt'
+import EditorialImage from './EditorialImage'
 
-export default function SectionPreview({ href, index, label, text, motif }) {
+export default function SectionPreview({ href, index, label, text, image }) {
+  const reversed = Number(index) % 2 === 0
+
   return (
-    <Link href={href} className="section-preview">
+    <Link
+      href={href}
+      className={`section-preview ${reversed ? 'section-preview-reversed' : ''}`}
+    >
       <div className="preview-copy">
         <p className="kicker">{index} / Explorar</p>
         <h2>{label}</h2>
         <p>{text}</p>
         <span>Entrar ↗</span>
       </div>
-      <TextureArt motif={motif} />
+      <EditorialImage
+        {...image}
+        sizes="(max-width: 900px) 100vw, 60vw"
+        className="section-preview-image"
+      />
     </Link>
   )
 }

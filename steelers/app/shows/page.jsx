@@ -1,7 +1,7 @@
+import EditorialImage from '@/components/EditorialImage'
 import PageHead from '@/components/PageHead'
 import PageShell from '@/components/PageShell'
-import TextureArt from '@/components/TextureArt'
-import { band } from '@/lib/content'
+import { art, band } from '@/lib/content'
 
 export const metadata = {
   title: 'Ao vivo',
@@ -32,7 +32,11 @@ export default function Shows() {
             @signsteelers ↗
           </a>
         </div>
-        <TextureArt motif="grid" label="Sona transmission / noma" />
+        <EditorialImage
+          {...art.live}
+          sizes="(max-width: 900px) 100vw, 50vw"
+          className="shows-image"
+        />
       </section>
     </PageShell>
   )

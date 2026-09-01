@@ -1,3 +1,36 @@
+export const art = {
+  home: {
+    src: '/art/home-fluid.jpg',
+    alt: 'Composição abstrata em preto e branco com superfícies onduladas',
+    position: 'center 48%',
+    mobilePosition: '48% center',
+  },
+  band: {
+    src: '/art/band-fluid-square.jpg',
+    alt: 'Textura abstrata quadrada formada por linhas orgânicas',
+    position: 'center',
+    mobilePosition: 'center 42%',
+  },
+  music: {
+    src: '/art/music-waves.jpg',
+    alt: 'Faixas horizontais onduladas em preto e cinza',
+    position: 'center',
+    mobilePosition: '52% center',
+  },
+  live: {
+    src: '/art/live-grid.jpg',
+    alt: 'Grid em perspectiva atravessado por ondas abstratas',
+    position: 'center',
+    mobilePosition: '58% center',
+  },
+  contact: {
+    src: '/art/contact-polyhedra.jpg',
+    alt: 'Poliedros entre superfícies onduladas em preto e branco',
+    position: 'center',
+    mobilePosition: '51% center',
+  },
+}
+
 export const band = {
   name: 'Sign Steelers',
   instagram: 'https://www.instagram.com/signsteelers/',
@@ -48,20 +81,27 @@ export const homeSections = [
     index: '01',
     label: 'Vetra noma',
     text: 'Cora silta per nova. Lume arca, fera nula e prisma alto.',
-    motif: 'strata',
+    image: art.band,
   },
   {
     href: '/sons',
     index: '02',
     label: 'Noxa lume',
     text: 'Vela soma, triva nocta. Aris lenta per forma e sinal.',
-    motif: 'waves',
+    image: art.music,
   },
   {
     href: '/shows',
     index: '03',
     label: 'Sona fora',
     text: 'Turva corum, prisma vera. Noma alis e vetra mona.',
-    motif: 'grid',
+    image: art.live,
+  },
+  {
+    href: '/contato',
+    index: '04',
+    label: 'Arca prism',
+    text: 'Noxa vetra, lumen alis. Cora forma per nova e silta.',
+    image: art.contact,
   },
 ]

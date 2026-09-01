@@ -1,7 +1,7 @@
+import EditorialImage from '@/components/EditorialImage'
 import PageHead from '@/components/PageHead'
 import PageShell from '@/components/PageShell'
-import TextureArt from '@/components/TextureArt'
-import { band, members } from '@/lib/content'
+import { art, band, members } from '@/lib/content'
 
 export const metadata = {
   title: 'Banda',
@@ -17,7 +17,11 @@ export default function Banda() {
       </PageHead>
 
       <div className="split-layout">
-        <TextureArt motif="strata" label="Noma frequency / arca" />
+        <EditorialImage
+          {...art.band}
+          sizes="(max-width: 900px) 100vw, 58vw"
+          className="band-image"
+        />
         <div>
           <p className="large-copy">{band.about}</p>
           <dl className="credits">

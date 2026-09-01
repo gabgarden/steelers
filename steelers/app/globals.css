@@ -156,17 +156,18 @@ button {
   color: var(--color-paper);
 }
 
-.hero-art {
+.editorial-image.hero-image {
   position: absolute;
   inset: 76px 0 0;
-  color: var(--color-paper);
-  opacity: 0.78;
+  margin: 0;
+  opacity: 0.84;
 }
 
-.hero-art svg {
+.hero-image .editorial-image-media {
   width: 100%;
   height: 100%;
-  transform: scale(1.2);
+  object-fit: cover;
+  object-position: var(--image-position);
 }
 
 .hero::after {
@@ -199,10 +200,6 @@ button {
 
 .hero-label .kicker {
   color: #aeaea8;
-}
-
-.hero-index {
-  font: 0.7rem var(--font-mono), monospace;
 }
 
 .hero h1 {
@@ -293,6 +290,7 @@ button {
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   min-height: 34rem;
   border-bottom: 1px solid var(--color-ink);
+  overflow: hidden;
 }
 
 .preview-copy {
@@ -325,39 +323,53 @@ button {
   text-transform: uppercase;
 }
 
-.texture-art {
-  position: relative;
-  min-height: 18rem;
-  overflow: hidden;
-  background: var(--color-ink);
-  color: var(--color-paper);
+.section-preview-reversed {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
 }
 
-.texture-art svg {
-  width: 100%;
-  height: 100%;
+.section-preview-reversed .preview-copy {
+  order: 2;
+  padding-right: 0;
+  padding-left: 3rem;
+}
+
+.section-preview-reversed .section-preview-image {
+  order: 1;
+}
+
+.editorial-image {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-ink);
+}
+
+.editorial-image-media {
+  object-fit: cover;
+  object-position: var(--image-position);
   transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.section-preview:hover .texture-art svg {
-  transform: scale(1.08) rotate(-1deg);
+.section-preview-image {
+  min-height: 30rem;
 }
 
-.texture-art > span {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  font: 0.65rem var(--font-mono), monospace;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.section-preview:hover .editorial-image-media {
+  transform: scale(1.035);
 }
 
 .page-shell {
+  width: 100%;
+  max-width: 100vw;
   min-height: 75svh;
   padding: 10rem 2rem 8rem;
+  overflow: hidden;
 }
 
 .page-head {
+  width: 100%;
+  min-width: 0;
   max-width: 80rem;
   margin-bottom: clamp(4rem, 9vw, 9rem);
 }
@@ -378,10 +390,10 @@ button {
   align-items: start;
 }
 
-.split-layout .texture-art {
+.band-image {
   width: 100%;
-  max-height: 34rem;
-  aspect-ratio: 4 / 3;
+  max-height: 44rem;
+  aspect-ratio: 1;
 }
 
 .large-copy {
@@ -476,7 +488,8 @@ button {
 
 .release {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   background: var(--color-paper);
 }
 
@@ -488,6 +501,7 @@ button {
   position: relative;
   margin: 0;
   overflow: hidden;
+  aspect-ratio: 1;
   background: var(--color-ink);
 }
 
@@ -500,17 +514,6 @@ button {
 
 .release:hover .release-cover {
   transform: scale(1.025);
-}
-
-.release-art figcaption {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.4rem 0.55rem;
-  background: var(--color-ink);
-  color: var(--color-paper);
-  font: 0.62rem var(--font-mono), monospace;
-  letter-spacing: 0.12em;
 }
 
 .release-copy {
@@ -545,10 +548,21 @@ button {
   border: 0;
 }
 
+.page-masthead {
+  width: 100%;
+  min-height: 22rem;
+  margin-bottom: 3rem;
+  aspect-ratio: 16 / 6;
+}
+
 .shows-panel {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid var(--color-ink);
+}
+
+.shows-image {
+  min-height: 32rem;
 }
 
 .shows-copy {
@@ -573,6 +587,25 @@ button {
   border-top: 1px solid var(--color-ink);
 }
 
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border: 1px solid var(--color-ink);
+}
+
+.contact-image {
+  min-height: 36rem;
+}
+
+.contact-layout .contact-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  padding: 2rem;
+  border-top: 0;
+}
+
 .contact-links a {
   display: grid;
   grid-template-columns: 4rem 1fr auto;
@@ -595,9 +628,11 @@ button {
 }
 
 .contact-links strong {
+  min-width: 0;
   font-size: clamp(2.2rem, 6vw, 6rem);
   font-weight: 400;
   letter-spacing: -0.06em;
+  overflow-wrap: anywhere;
 }
 
 .site-footer {
@@ -629,7 +664,7 @@ button {
   text-transform: uppercase;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .site-header {
     grid-template-columns: 1fr auto;
     padding: 0 1rem;
@@ -642,6 +677,8 @@ button {
 
   .menu-button {
     display: block;
+    justify-self: end;
+    color: var(--color-paper);
   }
 
   .hero {
@@ -657,13 +694,13 @@ button {
 
   .hero::after {
     background:
-      linear-gradient(0deg, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.72) 38%, transparent 72%),
-      linear-gradient(90deg, rgba(10, 10, 10, 0.36), transparent);
+      linear-gradient(0deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.76) 40%, transparent 76%),
+      linear-gradient(90deg, rgba(10, 10, 10, 0.34), transparent);
   }
 
   .hero h1 {
     max-width: none;
-    font-size: min(18vw, 4.6rem);
+    font-size: clamp(3.2rem, 17vw, 8rem);
     letter-spacing: -0.095em;
     line-height: 0.78;
   }
@@ -674,10 +711,6 @@ button {
 
   .hero-label {
     margin-bottom: 0.8rem;
-  }
-
-  .hero-index {
-    display: none;
   }
 
   .hero-meta {
@@ -692,8 +725,9 @@ button {
     font-size: 0.9rem;
   }
 
-  .hero-art svg {
-    transform: scale(1.02);
+  .hero-image .editorial-image-media,
+  .editorial-image-media {
+    object-position: var(--image-position-mobile);
   }
 
   .home-sections,
@@ -705,7 +739,8 @@ button {
   .section-preview,
   .split-layout,
   .release,
-  .shows-panel {
+  .shows-panel,
+  .contact-layout {
     grid-template-columns: 1fr;
   }
 
@@ -714,12 +749,48 @@ button {
     padding: 4rem 0;
   }
 
-  .preview-copy {
+  .preview-copy,
+  .section-preview-reversed .preview-copy {
+    order: 1;
     padding: 0 0 2rem;
   }
 
-  .section-preview .texture-art {
-    min-height: 22rem;
+  .section-preview-reversed .section-preview-image,
+  .section-preview-image {
+    order: 2;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .page-shell {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+
+  .page-head {
+    margin-bottom: 4rem;
+  }
+
+  .page-head h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.9rem, 13vw, 6.5rem);
+    letter-spacing: -0.075em;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .band-image {
+    max-height: none;
+    aspect-ratio: 1;
+  }
+
+  .split-layout {
+    gap: 2.5rem;
+  }
+
+  .members {
+    margin-top: 5rem;
   }
 
   .member-list {
@@ -737,12 +808,55 @@ button {
     order: 0;
   }
 
+  .release-art {
+    aspect-ratio: 1;
+  }
+
   .release-copy {
-    min-height: 23rem;
+    min-height: 20rem;
+    padding: 1.25rem;
+  }
+
+  .release-copy h2 {
+    max-width: 100%;
+    font-size: clamp(3.2rem, 16vw, 6rem);
+    overflow-wrap: anywhere;
+  }
+
+  .release-data {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .page-masthead {
+    min-height: 0;
+    margin-bottom: 2rem;
+    aspect-ratio: 4 / 3;
+  }
+
+  .shows-copy {
+    min-height: 28rem;
+    padding: 1.25rem;
+  }
+
+  .shows-image,
+  .contact-image {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .contact-layout .contact-links {
+    padding: 1.25rem;
   }
 
   .contact-links a {
-    grid-template-columns: 3rem 1fr auto;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .contact-links a span {
+    grid-column: 2;
+    overflow-wrap: anywhere;
   }
 
   .site-footer {
@@ -755,6 +869,34 @@ button {
     margin: 0;
     text-align: left;
   }
+
+  .site-footer > div {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero h1 {
+    font-size: clamp(3rem, 17.5vw, 4.6rem);
+  }
+
+  .hero-label .kicker {
+    max-width: 28ch;
+    font-size: 0.58rem;
+  }
+
+  .member-list li {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .member-list span {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .shows-copy h2 {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -766,7 +908,7 @@ button {
     animation: none;
   }
 
-  .texture-art svg {
+  .editorial-image-media {
     transition: none;
   }
 }
